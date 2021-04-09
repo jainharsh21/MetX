@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1088355241919",
+    "project_id": "metx-01",
+    "storage_bucket": "metx-01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088355241919:android:aa2cd1181638e10f4b9b0a",
+        "android_client_info": {
+          "package_name": "com.example.metx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088355241919-dagvee8gfvbqeqjjeji4va11jpniogev.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.metx",
+            "certificate_hash": "adc505c23b1e3fd386af9d773092ac648020a565"
+          }
+        },
+        {
+          "client_id": "1088355241919-cdvod3ql2m9ff2d6rm3lt0qn799a72gu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjNT3j3-AGywwWLPtgz2MSj0iLMVQpCnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088355241919-cdvod3ql2m9ff2d6rm3lt0qn799a72gu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
