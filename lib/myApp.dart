@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metx/screens/welcome.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -8,6 +9,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Welcome();
   }
 }
