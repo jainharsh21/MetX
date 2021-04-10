@@ -107,7 +107,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                   onPressed: () {},
                   child: Text(
-                    "LOGIN",
+                    "REGISTER",
                     style: GoogleFonts.stylish(),
                   ),
                 ),
