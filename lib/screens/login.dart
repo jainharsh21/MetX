@@ -11,6 +11,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool isObscure = true;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -48,10 +49,20 @@ class _LoginState extends State<Login> {
                   height: 30.0,
                 ),
                 TextFormField(
+                  obscureText: isObscure,
                   controller: _passwordController,
                   validator: passwordValidator,
-                  obscureText: true,
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                        color: Colors.white,
+                        icon: isObscure
+                            ? Icon(Icons.visibility)
+                            : Icon(Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            isObscure = !isObscure;
+                          });
+                        }),
                     hintText: 'Enter A Strong Password',
                     labelText: 'Password',
                     border: OutlineInputBorder(
