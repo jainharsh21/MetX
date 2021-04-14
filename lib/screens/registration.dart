@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -147,7 +150,16 @@ class _RegistrationState extends State<Registration> {
                               initIndex == 0 ? "student" : "student_chapter",
                           "img_url": "",
                         };
-                        print(userData);
+                        ApiCaller a = ApiCaller();
+                        var res = await a.register(userData);
+                        var body = json.decode(res);
+                        if (body['status'] == 201) {
+                          print("Registration successful");
+                          return;  
+                        }
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Registration Error"),
+                        ));
                       }
                     },
                     child: Text(

@@ -12,4 +12,11 @@ class ApiCaller {
     print(res.body);
     return res.body;
   }
+
+  register(Map userData) async {
+    var res = await http.post(Uri.parse(baseApiUrl + "/user"),
+        body: json.encode(userData), headers: headers);
+    print(res.body);
+    return res.body;
+  }
 }
