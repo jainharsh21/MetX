@@ -6,6 +6,8 @@ import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import 'login.dart';
+
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();
@@ -155,7 +157,10 @@ class _RegistrationState extends State<Registration> {
                         var body = json.decode(res);
                         if (body['status'] == 201) {
                           print("Registration successful");
-                          return;  
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => Login()),
+                              (route) => false);
+                          return; 
                         }
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Registration Error"),
