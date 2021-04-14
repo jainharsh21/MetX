@@ -15,6 +15,7 @@ class _RegistrationState extends State<Registration> {
   TextEditingController _confirmPasswordController = TextEditingController();
   bool isObscure = true;
   final _formKey = GlobalKey<FormState>();
+  int initIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +41,13 @@ class _RegistrationState extends State<Registration> {
                   activeBgColor: Colors.blueGrey[500],
                   activeFgColor: Colors.white,
                   minWidth: 150,
-                  initialLabelIndex: 0,
+                  initialLabelIndex: initIndex,
                   labels: ['Student', 'Student Chapter'],
                   onToggle: (index) {
                     print('switched to: $index');
+                    setState(() {
+                      initIndex = index;
+                    });
                   },
                 ),
                 SizedBox(
@@ -134,7 +138,16 @@ class _RegistrationState extends State<Registration> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        print("validated");
+                        var userData = {
+                          "name": _nameController.text,
+                          "email": _emailController.text,
+                          "phone": "",
+                          "password": _passwordController.text,
+                          "user_type":
+                              initIndex == 0 ? "student" : "student_chapter",
+                          "img_url": "",
+                        };
+                        print(userData);
                       }
                     },
                     child: Text(
