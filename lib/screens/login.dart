@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
 
 class Login extends StatefulWidget {
@@ -69,8 +70,15 @@ class _LoginState extends State<Login> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {}
+                    onPressed: () async {
+                      if (_formKey.currentState.validate()) {
+                        Map userData = {
+                          "email": _emailController.text,
+                          "password": _passwordController.text,
+                        };
+                        ApiCaller a = new ApiCaller();
+                        await a.login(userData);
+                      }
                     },
                     child: Text(
                       "LOGIN",
