@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:metx/utils/apiCaller.dart';
@@ -77,7 +79,16 @@ class _LoginState extends State<Login> {
                           "password": _passwordController.text,
                         };
                         ApiCaller a = new ApiCaller();
-                        await a.login(userData);
+                        var res = await a.login(userData);
+                        var body = json.decode(res);
+                        print(body);
+                        if (body['status'] == 200) {
+                          print("login successful");
+                          return;
+                        }
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Invalid credentials"),
+                        ));
                       }
                     },
                     child: Text(
