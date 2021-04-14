@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/utils/apiCaller.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class Registration extends StatefulWidget {
@@ -105,7 +106,10 @@ class _RegistrationState extends State<Registration> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    ApiCaller a = ApiCaller();
+                    await a.login();
+                  },
                   child: Text(
                     "REGISTER",
                     style: GoogleFonts.stylish(),
