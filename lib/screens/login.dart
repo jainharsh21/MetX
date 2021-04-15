@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/screens/student_chapter/landing.dart';
 import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'landing.dart';
+import './student/landing.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -101,13 +101,21 @@ class _LoginState extends State<Login> {
                               await SharedPreferences.getInstance();
                           prefs.setString('userData', res);
                           print("login successful");
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                builder: (context) => Landing(
-                                  userData: body['data'],
-                                ),
-                              ),
-                              (route) => false);
+                          body['data']['user_type'] == "student"
+                              ? Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => StudentLanding(
+                                      userData: body['data'],
+                                    ),
+                                  ),
+                                  (route) => false)
+                              : Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => StudentChapterLanding(
+                                      userData: body['data'],
+                                    ),
+                                  ),
+                                  (route) => false);
                           return;
                         }
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(

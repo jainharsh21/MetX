@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Landing extends StatefulWidget {
+class StudentLanding extends StatefulWidget {
   final Map userData;
-  Landing({this.userData});
+  StudentLanding({this.userData});
   @override
-  _LandingState createState() => _LandingState();
+  _StudentLandingState createState() => _StudentLandingState();
 }
 
-class _LandingState extends State<Landing> {
+class _StudentLandingState extends State<StudentLanding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
