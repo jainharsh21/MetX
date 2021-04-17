@@ -62,12 +62,12 @@ class App extends StatelessWidget {
                       var data = snapshot.data.getString('userData');
                       if (data != null) {
                         var userData = json.decode(data);
-                        return userData['user_type'] == "student"
+                        return userData["data"]['user_type'] == "student"
                             ? StudentLanding(
-                                userData: userData,
+                                userData: userData["data"],
                               )
                             : StudentChapterLanding(
-                                userData: userData,
+                                userData: userData["data"],
                               );
                       }
                       return Welcome();
