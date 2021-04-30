@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/constants/colors.dart';
 import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -25,7 +26,7 @@ class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: utilityColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),

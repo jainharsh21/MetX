@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/constants/colors.dart';
 import 'package:metx/screens/student_chapter/landing.dart';
 import 'package:metx/utils/apiCaller.dart';
 import 'package:metx/utils/form_validators.dart';
@@ -22,7 +23,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: utilityColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),

@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:metx/constants/colors.dart';
 import 'package:metx/screens/student/home.dart';
 import 'package:metx/screens/student/profile.dart';
 
@@ -36,7 +37,7 @@ class _StudentLandingState extends State<StudentLanding> {
           },
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          color: Colors.black,
+          color: utilityColor,
           backgroundColor: Colors.blueGrey,
           items: <Widget>[
             Icon(Icons.home, size: 30),

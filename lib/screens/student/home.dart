@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/constants/colors.dart';
 
 class StudentHome extends StatefulWidget {
   final Map userData;
@@ -14,7 +15,7 @@ class _StudentHomeState extends State<StudentHome> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: utilityColor,
         centerTitle: true,
         title: Text(
           "MetX",

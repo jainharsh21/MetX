@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:metx/constants/colors.dart';
 
 import 'login.dart';
 import 'registration.dart';
@@ -14,7 +15,7 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.black,
+        color: utilityColor,
         child: Padding(
           padding: const EdgeInsets.only(left: 20.0, right: 20.0),
           child: Column(
