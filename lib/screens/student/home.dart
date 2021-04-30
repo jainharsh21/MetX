@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:metx/constants/colors.dart';
+import 'package:metx/screens/welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StudentHome extends StatefulWidget {
   final Map userData;
@@ -21,6 +23,21 @@ class _StudentHomeState extends State<StudentHome> {
           "MetX",
           style: GoogleFonts.stylish(),
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.clear();
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Welcome(),
+                  ),
+                  (route) => false);
+            },
+          ),
+        ],
       ),
     );
   }

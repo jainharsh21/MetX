@@ -13,6 +13,19 @@ class StudentProfileState extends State<StudentProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              child: Column(
+                children: [
+                  // CircleAvatar(backgroundImage: NetworkImage(widget.userData[]),),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
