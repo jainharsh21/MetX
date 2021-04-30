@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metx/constants/colors.dart';
 
 class StudentProfile extends StatefulWidget {
   final Map userData;
@@ -11,7 +12,7 @@ class StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
+      backgroundColor: backgroundColor,
     );
   }
 }

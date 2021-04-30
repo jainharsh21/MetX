@@ -38,7 +38,7 @@ class _StudentLandingState extends State<StudentLanding> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
           color: utilityColor,
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: mainThemeColor,
           items: <Widget>[
             Icon(Icons.home, size: 30),
             Icon(Icons.person),
