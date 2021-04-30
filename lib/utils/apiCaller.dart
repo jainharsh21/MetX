@@ -17,4 +17,9 @@ class ApiCaller {
         body: json.encode(userData), headers: headers);
     return res.body;
   }
+
+  getEvents() async {
+    var res = await http.get(Uri.parse(baseApiUrl + "/events"));
+    return json.decode(res.body)['data'];
+  }
 }
