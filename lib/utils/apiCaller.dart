@@ -27,4 +27,10 @@ class ApiCaller {
     var res = await http.get(Uri.parse(baseApiUrl + "/user" + "/$id"));
     return json.decode(res.body)['data'];
   }
+
+  addAttendee(eventId, id) async {
+    var res = await http.patch(Uri.parse(
+        baseApiUrl + '/events' + '/$eventId' + '/addAttendee' + '/$id'));
+    return json.decode(res.body);
+  }
 }

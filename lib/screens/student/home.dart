@@ -84,7 +84,6 @@ class _StudentHomeState extends State<StudentHome> {
                   SizedBox(height: 10.0),
                   ListView.builder(
                     shrinkWrap: true,
-                    primary: false,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: events.length,
                     itemBuilder: (context, index) {
@@ -195,7 +194,11 @@ class _StudentHomeState extends State<StudentHome> {
                                                           10.0),
                                                 ),
                                               ),
-                                              onPressed: () async {},
+                                              onPressed: () async {
+                                                await a.addAttendee(event['id'],
+                                                    widget.userData['id']);
+                                                setState(() {});
+                                              },
                                               child: Text(
                                                 "REGISTER",
                                                 style: GoogleFonts.stylish(),
