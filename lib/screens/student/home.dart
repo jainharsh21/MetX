@@ -13,27 +13,7 @@ class StudentHome extends StatefulWidget {
 }
 
 class _StudentHomeState extends State<StudentHome> {
-  // List events;
-  // bool isLoading = false;
   ApiCaller a = ApiCaller();
-  // initEvents() async {
-  //   setState(() {
-  //     isLoading = true;
-  //   });
-  //   var data = await a.getEvents();
-  //   setState(() {
-  //     events = data;
-  //   });
-  //   setState(() {
-  //     isLoading = false;
-  //   });
-  // }
-
-  // @override
-  // void initState() {
-  //   initEvents();
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {
