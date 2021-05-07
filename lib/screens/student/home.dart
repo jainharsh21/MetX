@@ -65,6 +65,7 @@ class _StudentHomeState extends State<StudentHome> {
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView(
+              shrinkWrap: true,
               children: [
                 SizedBox(height: 20.0),
                 Text(
@@ -81,6 +82,7 @@ class _StudentHomeState extends State<StudentHome> {
                   itemCount: events.length,
                   itemBuilder: (context, index) {
                     var event = events[index];
+                    ApiCaller a = ApiCaller();
                     return Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Card(
@@ -91,7 +93,23 @@ class _StudentHomeState extends State<StudentHome> {
                         child: Column(
                           children: [
                             SizedBox(height: 20.0),
-                            
+                            FutureBuilder(
+                                future: a.getUser(event['student_chapter_id']),
+                                builder: (context, snapshot) {
+                                  var chapter = snapshot.data;
+                                  if (!snapshot.hasData)
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  return Text(
+                                    "Ogranized By : ${chapter['name']}",
+                                    style: GoogleFonts.lato(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  );
+                                }),
+                            SizedBox(height: 20.0),
                             FittedBox(
                               fit: BoxFit.fill,
                               child: Image.network(
@@ -99,7 +117,8 @@ class _StudentHomeState extends State<StudentHome> {
                               ),
                             ),
                             ExpansionTile(
-                              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                              expandedCrossAxisAlignment:
+                                  CrossAxisAlignment.start,
                               title: ListTile(
                                 title: Text(
                                   event['name'],
@@ -146,6 +165,28 @@ class _StudentHomeState extends State<StudentHome> {
                                     "Description : ${event['description']}",
                                     style: GoogleFonts.stylish(
                                       fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20.0),
+                                Center(
+                                  child: SizedBox(
+                                    height: 40.0,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.7,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.blueGrey[600],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
+                                      ),
+                                      onPressed: () async {},
+                                      child: Text(
+                                        "REGISTER",
+                                        style: GoogleFonts.stylish(),
+                                      ),
                                     ),
                                   ),
                                 ),
