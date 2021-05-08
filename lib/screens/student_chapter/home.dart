@@ -50,127 +50,144 @@ class _StudentChapterHomeState extends State<StudentChapterHome> {
               child: CircularProgressIndicator(),
             );
           var events = snapshot.data;
-          return ListView.builder(
-            itemCount: events.length,
-            itemBuilder: (context, index) {
-              var event = events[index];
-              return event['student_chapter_id'] == widget.userData['id']
-                  ? Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        color: mainThemeColor,
-                        child: Column(
-                          children: [
-                            SizedBox(height: 20.0),
-                            FutureBuilder(
-                                future: a.getUser(event['student_chapter_id']),
-                                builder: (context, snapshot) {
-                                  var chapter = snapshot.data;
-                                  if (!snapshot.hasData)
-                                    return Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  return Text(
-                                    "Ogranized By : ${chapter['name']}",
-                                    style: GoogleFonts.lato(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  );
-                                }),
-                            SizedBox(height: 20.0),
-                            FittedBox(
-                              fit: BoxFit.fill,
-                              child: Image.network(
-                                event['event_img_url'],
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 20.0),
+                Text(
+                  "OUR EVENTS",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.stylish(
+                    fontSize: 25.0,
+                  ),
+                ),
+                SizedBox(height: 10.0),
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: events.length,
+                  itemBuilder: (context, index) {
+                    var event = events[index];
+                    return event['student_chapter_id'] == widget.userData['id']
+                        ? Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                            ),
-                            ExpansionTile(
-                              expandedCrossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              title: ListTile(
-                                title: Text(
-                                  event['name'],
-                                  style: GoogleFonts.stylish(
-                                    fontSize: 20.0,
+                              color: mainThemeColor,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 20.0),
+                                  FutureBuilder(
+                                      future: a
+                                          .getUser(event['student_chapter_id']),
+                                      builder: (context, snapshot) {
+                                        var chapter = snapshot.data;
+                                        if (!snapshot.hasData)
+                                          return Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        return Text(
+                                          "Ogranized By : ${chapter['name']}",
+                                          style: GoogleFonts.lato(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        );
+                                      }),
+                                  SizedBox(height: 20.0),
+                                  Image(
+                                    image: NetworkImage(event['event_img_url']),
                                   ),
-                                ),
-                                subtitle: Text(
-                                  event['summary'],
-                                  style: GoogleFonts.stylish(
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                              ),
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20.0),
-                                  child: Text(
-                                    "Event On : ${event['eventAtOg']}",
-                                    textAlign: TextAlign.start,
-                                    style: GoogleFonts.stylish(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20.0),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20.0),
-                                  child: Text(
-                                    "Event At : ${event['location']}",
-                                    textAlign: TextAlign.start,
-                                    style: GoogleFonts.stylish(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20.0),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20.0, right: 20.0),
-                                  child: Text(
-                                    "Description : ${event['description']}",
-                                    style: GoogleFonts.stylish(
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 20.0),
-                                Center(
-                                  child: SizedBox(
-                                    height: 40.0,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.blueGrey[600],
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
+                                  ExpansionTile(
+                                    expandedCrossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    title: ListTile(
+                                      title: Text(
+                                        event['name'],
+                                        style: GoogleFonts.stylish(
+                                          fontSize: 20.0,
                                         ),
                                       ),
-                                      onPressed: () async {},
-                                      child: Text(
-                                        "Edit Event",
-                                        style: GoogleFonts.stylish(),
+                                      subtitle: Text(
+                                        event['summary'],
+                                        style: GoogleFonts.stylish(
+                                          fontSize: 16.0,
+                                        ),
                                       ),
                                     ),
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, right: 20.0),
+                                        child: Text(
+                                          "Event On : ${event['eventAtOg']}",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.stylish(
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20.0),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, right: 20.0),
+                                        child: Text(
+                                          "Event At : ${event['location']}",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.stylish(
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20.0),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 20.0, right: 20.0),
+                                        child: Text(
+                                          "Description : ${event['description']}",
+                                          style: GoogleFonts.stylish(
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20.0),
+                                      Center(
+                                        child: SizedBox(
+                                          height: 40.0,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.7,
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Colors.blueGrey[600],
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
+                                              ),
+                                            ),
+                                            onPressed: () async {},
+                                            child: Text(
+                                              "Edit Event",
+                                              style: GoogleFonts.stylish(),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 20.0),
+                                    ],
                                   ),
-                                ),
-                                SizedBox(height: 20.0),
-                              ],
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                    )
-                  : SizedBox.shrink();
-            },
+                          )
+                        : SizedBox.shrink();
+                  },
+                ),
+              ],
+            ),
           );
         },
       ),
