@@ -33,4 +33,10 @@ class ApiCaller {
         baseApiUrl + '/events' + '/$eventId' + '/addAttendee' + '/$id'));
     return json.decode(res.body);
   }
+
+  createEvent(Map eventData) async {
+    var res = await http.post(Uri.parse(baseApiUrl + "/event"),
+        body: json.encode(eventData), headers: headers);
+    return res.body;
+  }
 }

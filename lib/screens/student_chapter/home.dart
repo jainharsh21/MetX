@@ -198,7 +198,7 @@ class _StudentChapterHomeState extends State<StudentChapterHome> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CreateEvent(),
+              builder: (context) => CreateEvent(userData: widget.userData,),
             ),
           );
         },
