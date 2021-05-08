@@ -99,11 +99,9 @@ class _StudentHomeState extends State<StudentHome> {
                                           );
                                         }),
                                     SizedBox(height: 20.0),
-                                    FittedBox(
-                                      fit: BoxFit.fill,
-                                      child: Image.network(
-                                        event['event_img_url'],
-                                      ),
+                                    Image(
+                                      image:
+                                          NetworkImage(event['event_img_url']),
                                     ),
                                     ExpansionTile(
                                       expandedCrossAxisAlignment:
