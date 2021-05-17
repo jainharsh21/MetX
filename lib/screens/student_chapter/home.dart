@@ -192,8 +192,8 @@ class _StudentChapterHomeState extends State<StudentChapterHome> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: mainThemeColor,
-        child: Icon(Icons.add),
+        backgroundColor: utilityColor,
+        child: Icon(Icons.add,color: Colors.white,),
         onPressed: () {
           Navigator.push(
             context,
