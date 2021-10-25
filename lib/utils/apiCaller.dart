@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiCaller {
-  String baseApiUrl = "http://192.168.0.106:3000";
+  String baseApiUrl = "http://192.168.0.104:3000";
   Map<String, String> headers = {"Content-type": "application/json"};
 
   login(Map userData) async {
