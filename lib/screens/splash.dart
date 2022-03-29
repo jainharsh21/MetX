@@ -6,6 +6,7 @@ import 'package:metx/screens/student_chapter/landing.dart';
 import 'package:metx/screens/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'intro.dart';
 import 'student/landing.dart';
 
 class Splash extends StatefulWidget {
@@ -18,6 +19,16 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   handleLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool _seen = (prefs.getBool('seen') ?? false);
+    if (!_seen) {
+      await prefs.setBool('seen', true);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => Intro(),
+        ),
+      );
+      return;
+    }
     var data = prefs.getString('userData');
     if (data != null) {
       var userData = json.decode(data);
